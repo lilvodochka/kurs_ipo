@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мероприятие</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">Назад к поиску</a>
+        
+        <div id="eventDetail" class="event-detail">
+            <!-- Данные будут вставлены JS -->
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Получаем ID из URL: /event.html?id=1
+        const urlParams = new URLSearchParams(window.location.search);
+        const eventId = urlParams.get('id');
+        if (eventId) {
+            loadEventDetails(eventId);
+        } else {
+            document.getElementById('eventDetail').innerHTML = '<p>Мероприятие не найдено</p>';
+        }
+    </script>
+</body>
+</html>

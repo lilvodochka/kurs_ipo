@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск концертов</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Концерты и мероприятия</h1>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Поиск по артисту, городу, названию...">
+                <button onclick="searchEvents()">Искать</button>
+            </div>
+        </header>
+        <main>
+            <div id="loading" class="loading" style="display:none;">Загрузка...</div>
+            <div id="eventsGrid" class="events-grid"></div>
+            <div id="noResults" class="no-results" style="display:none;">
+                <p>Мероприятия не найдены</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Автоматический поиск при вводе (через 500 мс)
+        let timeout;
+        document.getElementById('searchInput').addEventListener('input', function() {
+            clearTimeout(timeout);
+            timeout = setTimeout(searchEvents, 500);
+        });
+
+        // Загрузка при открытии страницы
+        window.onload = () => searchEvents();
+    </script>
+</body>
+</html>
